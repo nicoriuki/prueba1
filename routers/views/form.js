@@ -1,8 +1,9 @@
-const { Router } = require("express");
+const { Router } = require('express');
+const ProductsController = require('../../controllers/ProductsController');
 
 const router = Router();
 
-router.get("/", (req, res, next) => {
+router.get('/', (req, res, next) => {
       try {
             const products = ProductsController.getProduct();
             const data = {
@@ -10,7 +11,7 @@ router.get("/", (req, res, next) => {
                   isEmpty: !products.length,
                   detailUrlBase: process.env.BASE_HOST,
             };
-            res.render("form", data);
+            res.render('form', data);
       } catch (error) {
             next(error);
       }
